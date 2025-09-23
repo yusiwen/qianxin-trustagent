@@ -7,5 +7,5 @@ if [ "$ARCH" = 'x86_64' ]; then
 fi
 echo "ARCH=$ARCH"
 
-curl -L "https://share.yusiwen.cn/public/vpn/qianxin/TrustAgent_standard_${ARCH}_3.3.1.1155_linux.deb" -o /vpn-client.deb && \
+curl -L "https://github.com/yusiwen/qianxin-clients/blob/master/trustagent/TrustAgent_standard_${ARCH}_3.3.1.1155_linux.deb" -o /vpn-client.deb && \
 dpkg-deb -R /vpn-client.deb /build/
