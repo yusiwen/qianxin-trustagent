@@ -1,0 +1,14 @@
+[Unit]
+Description=Used for service startup
+Requires=
+After=
+
+[Service]
+PIDFile=/var/run/trustservicemgr.pid
+ExecStartPre=/bin/rm -f /var/run/trustservicemgr.pid
+ExecStart=/opt/apps/com.qianxin.trustagent/files/bin/trustservicemgr
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Front reverse proxy Server and transparent proxy server of trustservice
+Documentation=
+Wants=network.target
+After=network.target
+Requires=trustdservice.service trustservicemgr.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/opt/apps/com.qianxin.trustagent/files/bin/trustagentservice
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

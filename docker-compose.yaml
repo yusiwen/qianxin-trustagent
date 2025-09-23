@@ -1,0 +1,55 @@
+---
+services:
+  qianxin-trustagent:
+    image: yusiwen/qianxin-trustagent:3.4.1.1010.15
+    container_name: qianxin-trustagent
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - KASM_NO_VETH=1
+      - KASM_NO_AUTH=1
+      - KASM_VNC_SSL=0
+      - TZ=Asia/Shanghai
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    cgroup: host
+    user: root
+    shm_size: 512m
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576 
+    volumes:
+      - user-data:/home/kasm-user/.TrustAgent
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    entrypoint: ["/lib/systemd/systemd"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+    networks:
+      macvlan:
+        ipv4_address: "192.168.2.193"
+
+volumes:
+  user-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${HOME}/.cache/qianxin-trustagent/user-data
+
+networks:
+  macvlan:
+    name: macvlan
+    driver: macvlan
+    driver_opts:
+      parent: ${MACVLAN_PARENT_DEVICE:-ens18}
+    ipam:
+      config:
+        - subnet: "192.168.2.0/24"
+          ip_range: "192.168.2.192/27"
+          gateway: "192.168.2.1"
+          aux_addresses:
+            host: "192.168.2.223"

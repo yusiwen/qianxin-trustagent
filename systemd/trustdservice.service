@@ -1,0 +1,15 @@
+[Unit]
+Description=trustdservice Service
+Wants=network.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/apps/com.qianxin.trustagent/files/bin/
+ExecStart=/opt/apps/com.qianxin.trustagent/files/bin/trustdservice
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+Alias=trustdservice.service
