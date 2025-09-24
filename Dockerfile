@@ -3,6 +3,7 @@ FROM ubuntu:noble AS builder
 RUN apt-get update && \
     apt-get install -y curl
 COPY ./extract_deb.sh /extract_deb.sh
+ARG TRUSTAGENT_VERSION
 RUN /extract_deb.sh
 
 FROM yusiwen/kasm-core-minimal:1.3.4-systemd
