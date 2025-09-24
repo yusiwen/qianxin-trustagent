@@ -11,7 +11,7 @@ target "qianxin-trustagent" {
   platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "qianxin-trustagent-3.3" {
+target "qianxin-trustagent-3_3" {
   context = "."
   dockerfile = "Dockerfile-3.3"
   tags = ["yusiwen/qianxin-trustagent:3.3.1.1155"]
