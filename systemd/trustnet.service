@@ -5,6 +5,7 @@ After=network.target
 
 [Service]
 Type=oneshot
+PassEnvironment=BYPASS_ROUTES
 ExecStart=/routes.sh
 RemainAfterExit=yes
 

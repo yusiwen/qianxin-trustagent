@@ -30,7 +30,8 @@ COPY ./routes.sh /routes.sh
 
 RUN /install.sh
 
-USER 1000
 ENV BYPASS_ROUTES=
+
+USER 1000
 
 COPY ./defaults/menu.xml /home/kasm-user/.config/openbox/menu.xml

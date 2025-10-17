@@ -3,6 +3,7 @@
 DEFAULT_GW=$(route -n | grep 'UG[ \t]' | awk '{print $2}')
 if [ -n "$DEFAULT_GW" ]; then
   if [ -n "$BYPASS_ROUTES" ]; then
+    echo "Bypassing routes: $BYPASS_ROUTES ..."
     IFS=',' read -r -a routes <<< "$BYPASS_ROUTES"
     for r in "${routes[@]}"; do
       ip route add "$r" via "$DEFAULT_GW" dev eth0 metric 50

@@ -32,7 +32,8 @@ RUN /install.sh
 RUN echo '/opt/apps/com.qianxin.trustagent/files/bin' > /etc/ld.so.conf.d/qianxin-trustagent.conf && \
     ldconfig
 
-USER 1000
 ENV BYPASS_ROUTES=
+
+USER 1000
 
 COPY ./defaults/menu.xml /home/kasm-user/.config/openbox/menu.xml
