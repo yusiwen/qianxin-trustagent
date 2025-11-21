@@ -1,10 +1,21 @@
 group "default" {
-  targets = ["qianxin-trustagent"]
+  targets = ["qianxin-trustagent-3_5"]
 }
 
-target "qianxin-trustagent" {
+target "qianxin-trustagent-3_5" {
   context = "."
-  dockerfile = "Dockerfile"
+  dockerfile = "Dockerfile-3.5"
+  tags = ["yusiwen/qianxin-trustagent:3.5.1.1003.62"]
+  args = {
+    TRUSTAGENT_VERSION = "3.5.1.1003.62"
+  }
+  no-cache = false
+  platforms = ["linux/amd64", "linux/arm64"]
+}
+
+target "qianxin-trustagent-3_4" {
+  context = "."
+  dockerfile = "Dockerfile-3.4"
   tags = ["yusiwen/qianxin-trustagent:3.4.1.1010.15"]
   args = {
     TRUSTAGENT_VERSION = "3.4.1.1010.15"

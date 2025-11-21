@@ -162,7 +162,12 @@ deploy_service() {
     chmod 777 /usr/share/trustagent
 
     systemctl enable trustdservice.service
-    systemctl enable trustfrontservice.service
+    if [ -e /usr/lib/systemd/system/trustfrontservice.service ]; then
+      systemctl enable trustfrontservice.service
+    fi
+    if [ -e /usr/lib/systemd/system/trustservice.service ]; then
+      systemctl enable trustservice.service
+    fi
     systemctl enable trustservicemgr.service
     systemctl enable trustnet.service
 }
