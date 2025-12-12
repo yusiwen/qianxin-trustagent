@@ -13,6 +13,14 @@ if [ -n "$DEFAULT_GW" ]; then
   fi
 fi
 
+if [ -n "$DNAT_RULES" ]; then
+  IFS=',' read -r -a dnats <<< "$DNAT_RULES"
+  for d in "${dnats[@]}"; do
+    IFS='-' read -r -a ips <<< "${d}"
+    iptables -t nat -A PREROUTING -i eth0 -d "${ips[0]}" -j DNAT --to-destination "${ips[1]}"
+  done
+fi
+
 for i in {0..9}; do
   iptables -t nat -A POSTROUTING -o "vnic$i" -j MASQUERADE
   iptables -t mangle -A FORWARD -o "vnic$i" -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1360
