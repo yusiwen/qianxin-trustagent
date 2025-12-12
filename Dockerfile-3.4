@@ -31,6 +31,7 @@ COPY ./routes.sh /routes.sh
 RUN /install.sh
 
 ENV BYPASS_ROUTES=
+ENV DNAT_RULES=
 
 USER 1000
 
