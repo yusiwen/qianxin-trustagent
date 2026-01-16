@@ -3,6 +3,6 @@
 <menu id="root-menu" label="MENU">
 <item label="xterm" icon="/usr/share/pixmaps/xterm-color_48x48.xpm"><action name="Execute"><command>/usr/bin/xterm</command></action></item>
 <item label="VPN-Client" icon="/opt/apps/com.qianxin.trustagent/entries/icons/hicolor/128x128/apps/com.qianxin.trustagent.png"><action name="Execute"><command>/opt/apps/com.qianxin.trustagent/files/bin/gui_start.sh</command></action></item>
-<item label="Memo" icon="/usr/share/icons/hicolor/48x48/apps/org.xfce.mousepad.png"><action name="Execute"><command>/usr/bin/mousepad $HOME/memo.txt</command></action></item>
+<item label="Memo" icon="/usr/share/icons/hicolor/48x48/apps/org.xfce.mousepad.png"><action name="Execute"><command>/usr/bin/mousepad memo.txt</command></action></item>
 </menu>
 </openbox_menu>
