@@ -10,7 +10,7 @@ services:
       - KASM_NO_AUTH=1
       - KASM_VNC_SSL=0
       - BYPASS_ROUTES=10.1.0.0/16,10.2.0.0/16,192.168.2.0/24,192.168.3.0/24
-      - DNAT_RULES=10.38.38.26-198.18.0.0
+      - DNAT_RULES=10.38.38.26-198.18.0.11
       - TZ=Asia/Shanghai
     devices:
       - "/dev/net/tun:/dev/net/tun"
