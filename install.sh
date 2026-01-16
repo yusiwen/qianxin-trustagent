@@ -163,10 +163,10 @@ deploy_service() {
 
     systemctl enable trustdservice.service
     if [ -e /usr/lib/systemd/system/trustfrontservice.service ]; then
-      systemctl enable trustfrontservice.service
+        systemctl enable trustfrontservice.service
     fi
     if [ -e /usr/lib/systemd/system/trustservice.service ]; then
-      systemctl enable trustservice.service
+        systemctl enable trustservice.service
     fi
     systemctl enable trustservicemgr.service
     systemctl enable trustnet.service

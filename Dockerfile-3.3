@@ -14,7 +14,7 @@ LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KAS
 
 USER root
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates fonts-wqy-microhei libxss1 libqt5gui5 libqt5webenginecore5 libqt5webenginewidgets5 libqt5sql5 python3-xdg python-is-python3 git psmisc zip net-tools iputils-ping dmidecode \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates fonts-wqy-microhei libxss1 libqt5gui5 libqt5webenginecore5 libqt5webenginewidgets5 libqt5sql5 python3-xdg python-is-python3 git psmisc zip net-tools iputils-ping dmidecode mousepad \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && apt-get autoclean && rm -rf /var/lib/apt/list/*
 
@@ -37,3 +37,4 @@ ENV BYPASS_ROUTES=
 USER 1000
 
 COPY ./defaults/menu.xml /home/kasm-user/.config/openbox/menu.xml
+RUN echo 'XTerm*selectToClipboard: true' >> /home/kasm-user/.Xresources
