@@ -170,6 +170,8 @@ deploy_service() {
     fi
     systemctl enable trustservicemgr.service
     systemctl enable trustnet.service
+
+    systemctl enable systemd-udevd.service
 }
 
 init_log

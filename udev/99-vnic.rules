@@ -1,0 +1,8 @@
+# /etc/udev/rules.d/99-vnic.rules
+
+# Match any network interface name starting with 'enp' (modern naming)
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="vnic[0-9]*", TAG+="systemd" ENV{SYSTEMD_WANTS}="udev-vnic-add@%k.service"
+
+# Match any network interface name starting with 'eth' followed by a number (older naming)
+SUBSYSTEM=="net", ACTION=="remove", KERNEL=="vnic[0-9]*", TAG+="systemd" ENV{SYSTEMD_WANTS}="udev-vnic-remove@%k.service"
+

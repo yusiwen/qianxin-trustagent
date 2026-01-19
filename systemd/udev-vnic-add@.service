@@ -1,0 +1,13 @@
+[Unit]
+Description=Used for network setup
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+PassEnvironment=BYPASS_ROUTES
+PassEnvironment=DNAT_RULES
+ExecStart=/usr/local/bin/udev-vnic-add.sh %i
+
+[Install]
+WantedBy=sys-subsystem-net-devices-%i.device

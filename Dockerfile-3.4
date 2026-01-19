@@ -14,7 +14,7 @@ LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KAS
 
 USER root
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates fonts-wqy-microhei libqt5gui5 python3-xdg python-is-python3 git psmisc zip net-tools iputils-ping dmidecode mousepad \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates fonts-wqy-microhei libqt5gui5 python3-xdg python-is-python3 git psmisc zip net-tools iputils-ping dmidecode mousepad udev \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && apt-get autoclean && rm -rf /var/lib/apt/list/*
 
@@ -25,6 +25,9 @@ COPY ./systemd/trustdservice.service /usr/lib/systemd/system/trustdservice.servi
 COPY ./systemd/trustfrontservice.service /usr/lib/systemd/system/trustfrontservice.service
 COPY ./systemd/trustservicemgr.service /usr/lib/systemd/system/trustservicemgr.service
 COPY ./systemd/trustnet.service /usr/lib/systemd/system/trustnet.service
+COPY ./udev/99-vnic.rules /etc/udev/rules.d/99-vnic.rules
+COPY ./udev/udev-vnic-add.sh /usr/local/bin/udev-vnic-add.sh
+COPY ./udev/udev-vnic-remove.sh /usr/local/bin/udev-vnic-remove.sh
 COPY ./install.sh /install.sh
 COPY ./routes.sh /routes.sh
 
