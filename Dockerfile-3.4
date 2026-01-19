@@ -25,6 +25,8 @@ COPY ./systemd/trustdservice.service /usr/lib/systemd/system/trustdservice.servi
 COPY ./systemd/trustfrontservice.service /usr/lib/systemd/system/trustfrontservice.service
 COPY ./systemd/trustservicemgr.service /usr/lib/systemd/system/trustservicemgr.service
 COPY ./systemd/trustnet.service /usr/lib/systemd/system/trustnet.service
+COPY ./systemd/udev-vnic-add@.service /usr/lib/systemd/system/udev-vnic-add@.service
+COPY ./systemd/udev-vnic-remove@.service /usr/lib/systemd/system/udev-vnic-remove@.service
 COPY ./udev/99-vnic.rules /etc/udev/rules.d/99-vnic.rules
 COPY ./udev/udev-vnic-add.sh /usr/local/bin/udev-vnic-add.sh
 COPY ./udev/udev-vnic-remove.sh /usr/local/bin/udev-vnic-remove.sh

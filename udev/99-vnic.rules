@@ -5,4 +5,3 @@ SUBSYSTEM=="net", ACTION=="add", KERNEL=="vnic[0-9]*", RUN+="/usr/bin/systemctl 
 
 # Match any network interface name starting with 'eth' followed by a number (older naming)
 SUBSYSTEM=="net", ACTION=="remove", KERNEL=="vnic[0-9]*", RUN+="/usr/bin/systemctl --no-block start udev-vnic-remove@%k.service"
-

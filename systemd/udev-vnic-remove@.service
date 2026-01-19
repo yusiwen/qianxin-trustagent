@@ -7,4 +7,3 @@ RemainAfterExit=no
 PassEnvironment=BYPASS_ROUTES
 PassEnvironment=DNAT_RULES
 ExecStart=/usr/local/bin/udev-vnic-remove.sh %i
-
