@@ -6,7 +6,7 @@ COPY ./extract_deb.sh /extract_deb.sh
 ARG TRUSTAGENT_VERSION
 RUN /extract_deb.sh
 
-FROM yusiwen/kasm-core-minimal:1.3.4-systemd
+FROM yusiwen/kasm-core-minimal:1.4.0-systemd
 LABEL Author=yusiwen@gmail.com
 LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KASM core desktop" \
 	License="GPLv2" \
