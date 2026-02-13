@@ -1,5 +1,5 @@
 [Unit]
-Description=Used for network setup
+Description=Network setup for TrustAgent at system bootup
 Wants=network.target
 After=network.target
 

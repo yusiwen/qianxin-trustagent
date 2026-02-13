@@ -12,7 +12,7 @@ if [ -n "$DEFAULT_GW" ]; then
     done
 
     echo '101 dnat' >> /etc/iproute2/rt_tables
-    ip rule add from all lookup dnat priority 101
+    ip rule add from all lookup dnat priority 99
   fi
 fi
 

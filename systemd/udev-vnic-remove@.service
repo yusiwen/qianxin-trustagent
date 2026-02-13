@@ -1,5 +1,5 @@
 [Unit]
-Description=Used for network setup
+Description=Network setup after virtual network device is removed
 
 [Service]
 Type=oneshot

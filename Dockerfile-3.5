@@ -6,7 +6,7 @@ COPY ./extract_deb.sh /extract_deb.sh
 ARG TRUSTAGENT_VERSION
 RUN /extract_deb.sh libssl11
 
-FROM yusiwen/kasm-core-minimal:1.3.4-systemd
+FROM yusiwen/kasm-core-minimal:1.4.0-systemd
 LABEL Author=yusiwen@gmail.com
 LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KASM core desktop" \
 	License="GPLv2" \
@@ -14,7 +14,9 @@ LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KAS
 
 USER root
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates fonts-wqy-microhei libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 python3-xdg python-is-python3 psmisc zip net-tools iputils-ping dmidecode mousepad \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    ca-certificates fonts-wqy-microhei libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 python3-xdg python-is-python3 \
+    psmisc zip net-tools iputils-ping dmidecode mousepad udev bind9-dnsutils \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && apt-get autoclean && rm -rf /var/lib/apt/list/*
 
@@ -26,6 +28,11 @@ COPY ./systemd/trustdservice.service /usr/lib/systemd/system/trustdservice.servi
 COPY ./systemd/trustservice.service /usr/lib/systemd/system/trustservice.service
 COPY ./systemd/trustservicemgr.service /usr/lib/systemd/system/trustservicemgr.service
 COPY ./systemd/trustnet.service /usr/lib/systemd/system/trustnet.service
+COPY ./systemd/udev-vnic-add@.service /usr/lib/systemd/system/udev-vnic-add@.service
+COPY ./systemd/udev-vnic-remove@.service /usr/lib/systemd/system/udev-vnic-remove@.service
+COPY ./udev/99-vnic.rules /etc/udev/rules.d/99-vnic.rules
+COPY ./udev/udev-vnic-add.sh /usr/local/bin/udev-vnic-add.sh
+COPY ./udev/udev-vnic-remove.sh /usr/local/bin/udev-vnic-remove.sh
 COPY ./install.sh /install.sh
 COPY ./routes.sh /routes.sh
 
