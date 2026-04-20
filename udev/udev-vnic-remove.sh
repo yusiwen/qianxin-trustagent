@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-iptables -t nat -D POSTROUTING -o "$1" -j MASQUERADE
-iptables -t mangle -D FORWARD -o "$1" -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1360
+DEVICE="$1"
+
+# 检查参数
+if [ -z "$DEVICE" ]; then
+  /usr/bin/logger "Error: no device specified"
+  exit 1
+fi
+
+
+iptables -t nat -D POSTROUTING -o "$DEVICE" -j MASQUERADE
+iptables -t mangle -D FORWARD -o "$DEVICE" -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1360
 
 DNAT_FILE=/run/trustagent_dnat
 if [ -f "$DNAT_FILE" ];then

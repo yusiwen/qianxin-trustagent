@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 DEVICE="$1"
+
+# 检查参数
+if [ -z "$DEVICE" ]; then
+  /usr/bin/logger "Error: no device specified"
+  exit 1
+fi
+
 DNS_ENABLED=0
 DNAT_FILE=/run/trustagent_dnat
 
