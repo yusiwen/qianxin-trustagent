@@ -61,7 +61,7 @@ fi
 if [ -n "$DNAT_RULES" ]; then
   IFS=',' read -r -a dnats <<< "$DNAT_RULES"
   for d in "${dnats[@]}"; do
-    IFS='-' read -r -a ips <<< "${d}"
+    IFS=':' read -r -a ips <<< "${d}"
     process_dnat "${ips[0]}" "${ips[1]}"
   done
 fi
