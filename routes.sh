@@ -15,11 +15,3 @@ if [ -n "$DEFAULT_GW" ]; then
     ip rule add from all lookup dnat priority 99
   fi
 fi
-
-if [ -n "$DNAT_RULES" ]; then
-  IFS=',' read -r -a dnats <<< "$DNAT_RULES"
-  for d in "${dnats[@]}"; do
-    IFS='-' read -r -a ips <<< "${d}"
-    iptables -t nat -A PREROUTING -i eth0 -d "${ips[0]}" -j DNAT --to-destination "${ips[1]}"
-  done
-fi
