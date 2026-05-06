@@ -6,7 +6,7 @@ COPY ./extract_deb.sh /extract_deb.sh
 ARG TRUSTAGENT_VERSION
 RUN /extract_deb.sh
 
-FROM yusiwen/kasm-core-minimal:1.4.0-systemd
+FROM yusiwen/kasm-core-minimal:1.4.1-systemd
 LABEL Author=yusiwen@gmail.com
 LABEL Description="Qianxin(奇安信) TrustAgent VPN client within a minimal KASM core desktop" \
 	License="GPLv2" \
@@ -37,8 +37,8 @@ COPY ./routes.sh /routes.sh
 
 RUN /install.sh
 
-ENV BYPASS_ROUTES=
-ENV DNAT_RULES=
+ENV BYPASS_ROUTES=""
+ENV DNAT_RULES=""
 
 USER 1000
 

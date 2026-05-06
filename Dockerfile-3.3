@@ -32,7 +32,7 @@ RUN /install.sh
 RUN echo '/opt/apps/com.qianxin.trustagent/files/bin' > /etc/ld.so.conf.d/qianxin-trustagent.conf && \
     ldconfig
 
-ENV BYPASS_ROUTES=
+ENV BYPASS_ROUTES=""
 
 USER 1000
 

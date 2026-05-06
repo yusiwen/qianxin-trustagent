@@ -41,8 +41,8 @@ RUN find /opt/apps/com.qianxin.trustagent/files -name '*.so*' -printf "%h\n" | s
     ldconfig && \
     sed -i -e 's/USE_INTERNAL_QT_FIRST=false/USE_INTERNAL_QT_FIRST=true/g' /opt/apps/com.qianxin.trustagent/files/bin/gui_opt.conf
 
-ENV BYPASS_ROUTES=
-ENV DNAT_RULES=
+ENV BYPASS_ROUTES=""
+ENV DNAT_RULES=""
 
 USER 1000
 
